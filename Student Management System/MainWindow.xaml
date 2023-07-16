@@ -1,0 +1,110 @@
+﻿<Window x:Class="Desktop01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:Desktop01"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="475" Width="700">
+
+    <Window.DataContext>
+        <local:MainWindowVM/>
+    </Window.DataContext>
+
+    <Grid>
+        <StackPanel  Orientation="Vertical" Background="#FFB2EBFF" >
+            <TextBlock Text="STUDENT REGISTRATION SYSTEM" Style="{StaticResource Titletext}" Margin="-20 10 0 0" Width="476" Foreground="#FF0E5D8C" FontFamily="David CLM MediumItalic" Height="38" />
+            <StackPanel Background="Transparent" Orientation="Horizontal" Height="51" Width="508" >
+                <TextBlock Text="First Name" Foreground="#FF4A4F51"  Style="{StaticResource ListView}" Width="118" />
+                <TextBlock Text="Last Name" Foreground="#FF4A4F51"   Style="{StaticResource ListView}" Width="121" />
+                <TextBlock Text="Age" Foreground="#FF4A4F51"  Style="{StaticResource ListView}"  Width="38" />
+                <TextBlock Text="Date Of Birth"  Foreground="#FF4A4F51"  Style="{StaticResource ListView}" Width="90" />
+                <TextBlock Text="GPA" Foreground="#FF4A4F51"  Style="{StaticResource ListView}" Width="43" />
+            </StackPanel>
+            <ListView x:Name="Listview" Background="Transparent" Height="256" ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}"
+                     SelectedItem="{Binding SelectedUser, UpdateSourceTrigger=PropertyChanged}" Width="558" BorderBrush="{x:Null}" SelectionChanged="Listview_SelectionChanged"  >
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <Border CornerRadius="20" Margin="2" Width="530" Height="37" Background="#FFFAFAFA" >
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2" Color="#FFC2C2C2" />
+                            </Border.Effect>
+                            <StackPanel Width="600" Orientation="Horizontal" >
+                                <Image Width="35" Height="35" Source="{Binding Image}" />
+                                <TextBlock Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource ListView}" Width="118" />
+                                <TextBlock Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource ListView}" Width="118" />
+                                <TextBlock Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource ListView}" Width="38" />
+                                <TextBlock Text="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource ListView}" Width="96" />
+                                <TextBlock Text="{Binding GPA, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource ListView}" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Grid Height="103" Background="White">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,26" >
+                    <Button Content="Add"  Command="{Binding AddStudentCommand}"  Style="{StaticResource FuncButton}"  Width="60"  Background="#FFE62C70">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#FFBEBDBD" ShadowDepth="2"/>
+                        </Button.Effect>
+                    </Button>
+                    <Button Content="Edit" Command="{Binding EditStudentCommand}"  Style="{StaticResource FuncButton}" Width="60" Background="#FF56C5FF">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#FFBEBDBD" ShadowDepth="2"/>
+                        </Button.Effect>
+                    </Button>
+                    <Button Content="Delete" Command="{Binding DeleteStudentCommand}"  Style="{StaticResource FuncButton}" Width="60"  Background="#FF5183C8">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#FFBEBDBD" ShadowDepth="2"/>
+                        </Button.Effect>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Height="386" Width="584"  Opacity="0.15" Margin="0 50 45 78">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="146.967"/>
+                        <TranslateTransform Y="9.217" X="-83.095"/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+                <Border Width="399"
+                            Height="60"
+                            Background="#FF000FFF"
+                            CornerRadius="30"/>
+                <Border Width="276"
+                            Height="44"
+                            Background="#FFD12582"
+                            CornerRadius="30"/>
+                <Border Width="494"
+                            Height="34"
+                            Background="#FF9060FF"
+                            CornerRadius="30"/>
+                <Border Width="249"
+                            Height="56"
+                            Background="#FF0059FF"
+                            CornerRadius="30"/>
+                <Border Width="319"
+                            Height="64"
+                            Background="#FFD125C0"
+                            CornerRadius="30"/>
+                <Border Width="404"
+                            Height="64"
+                            Background="#FFFF5656"
+                            CornerRadius="30"/>
+                <Border Width="334"
+                            Height="66"
+                            Background="#FF0059FF"
+                            CornerRadius="30"/>
+            </StackPanel>
+
+        </StackPanel>
+
+
+    </Grid>
+</Window>
